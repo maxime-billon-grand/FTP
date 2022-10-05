@@ -7,8 +7,10 @@ if [[ "$continue" = "N" ]] || [[ "$continue" = "n" ]]; then
     exit
 fi
 
-sudo apt-get remove proftpd
+sudo systemctl kill proftpd.service
 
-sudo apt-get purge proftpd
+sudo apt-get remove proftpd*
+
+sudo apt-get purge proftpd*
 
 
