@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# This file is the installation file for the TLS protocol
 proftpdconfigPath="../test/proftpd.conf"
 tlsconfigPath="../test/tls.conf"
 modulesconfigPath="../test/modules.conf"
@@ -60,5 +60,11 @@ sed -i "${line}s/.//" $modulesconfigPath
 
 
 
+if sudo systemctl restart proftpd ; then
+    echo "========================="
+    echo "TLS INSTALLATION COMPLETE"
+else
+    echo "THERE IS A PROBLEM WITH TLS PROTOCOL" && exit
+fi
 
 
