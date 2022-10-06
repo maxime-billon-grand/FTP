@@ -3,6 +3,17 @@
 # Path of this script
 thisPath=$(dirname "$0")
 
+# Checking if need to install the basis
+echo "Is this machine a noGUI Debian ? (Y/N)"
+read installBasis
+if [[ "$installBasis" = "Y" ]] || [[ "$installBasis" = "y" ]]; then
+    apt install sudo
+    sudo apt install adduser
+    sudo apt install sed
+
+fi
+
+
 # ProFTPd Installation
 if ! sudo apt install proftpd* ; then
     exit 
@@ -10,6 +21,11 @@ else
     echo "============================="
     echo "PROFTPD INSTALLATION COMPLETE"
 fi
+
+# Path of the proFTPd configuration files
+proftpdconfigPath="/etc/proftpd/proftpd.conf"
+tlsconfigPath="/etc/proftpd/tls.conf"
+modulesconfigPath="/etc/proftpd/modules.conf"
 
 # Creation of the users
 echo ">> Creation of the FTP user(s) :"
@@ -31,13 +47,6 @@ do
     read moreUsers
 
 done
-
-
-# Path of the proFTPd configuration files
-proftpdconfigPath="/etc/proftpd/proftpd.conf"
-tlsconfigPath="/etc/proftpd/tls.conf"
-modulesconfigPath="/etc/proftpd/modules.conf"
-
 
 # Jailing users in their /home folder
 echo ">> Do you want to jail users in their /home directory ? (Y/N)"

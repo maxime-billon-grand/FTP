@@ -3,7 +3,7 @@
 # This file is the installation file of the Anonymous access
 
 
-# Uncomment the lines in proftpd.conf
+# Uncomment the lines in proftpd.conf from "<Anonymous ~ftp>" to "</Anonymous>"
 lineStart=$(sudo sed -n '/<Anonymous ~ftp>/=' $proftpdconfigPath)
 
 lineStop=$(sudo sed -n "/<\/Anonymous>/=" $proftpdconfigPath)
@@ -12,7 +12,7 @@ for (( i=$lineStart; i<=$lineStop; i++ )); do
     sudo sed -i "${i}s/.//" $proftpdconfigPath
 done
 
-# Autorise connexion without password
+# Authorise connexion without password
 sudo sed -i "/DirFakeGroup/a AnonRequirePassword off" $proftpdconfigPath
 
 

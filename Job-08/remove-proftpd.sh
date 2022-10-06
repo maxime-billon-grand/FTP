@@ -10,7 +10,8 @@ fi
 sudo systemctl kill proftpd.service
 
 sudo apt-get remove proftpd*
+sudo apt-get remove openssl
 
 sudo apt-get purge proftpd*
-
+sudo apt-get purge openssl
 

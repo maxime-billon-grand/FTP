@@ -8,7 +8,7 @@ sudo apt install openssl
 # Create key and certificate for a duration of 1 year
 sudo mkdir /etc/proftpd/ssl
 sudo openssl req -new -x509 -days 365 -nodes -out /etc/ssl/certs/proftpd.crt -keyout /etc/ssl/private/proftpd.key
-# RENSEIGNEMENTS !!!!!!!
+
 
 sudo chmod 640 /etc/ssl/private/proftpd.key
 sudo chmod 640 /etc/ssl/certs/proftpd.crt
