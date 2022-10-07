@@ -8,8 +8,7 @@ csvfile=$thisPath/FTP_Userlist.csv
 
 # Checking if need to install the basic commands
 echo "If this is a newly created debian noGUI server, we need to install the basic commands."
-echo "Is needed to install the basic commands ? (Y/N)"
-read installBasis
+read -p "Is needed to install the basic commands ? (Y/N) " installBasis
 if [[ "$installBasis" = "Y" ]] || [[ "$installBasis" = "y" ]]; then
     apt install sudo
     apt install adduser
@@ -55,7 +54,7 @@ do
             echo "${line[1],,}:${line[3]}" | sudo chpasswd
 
 # Add restrictions on the new user's /home directory
-            echo -e "<Directory /home/${line[1],,}>\n Umask 022\n AllowOverwrite off \n <Limit LOGIN>\n  AllowUser ${line[1],,}\n  DenyAll\n </Limit> \n <Limit ALL>\n  AllowUser ${line[1],,}\n  DenyAll\n </Limit>\n</Directory>" | sudo tee -a /etc/proftpd/conf.d/users.conf
+            echo -e "<Directory /home/${line[1],,}>\n Umask 022\n AllowOverwrite off \n <Limit LOGIN>\n  AllowUser ${line[1],,}\n  DenyAll\n </Limit> \n <Limit ALL>\n  AllowUser ${line[1],,}\n  DenyAll\n </Limit>\n</Directory>\n" | sudo tee -a /etc/proftpd/conf.d/users.conf
 
 # Like in a Job 07, we could juste jail users in their home using the "DefaultRoot ~" option in the /etc/proftp/proftpd.conf file.
 
@@ -65,13 +64,11 @@ do
                 sudo adduser ${line[1],,} sudo
             else
                 echo ${line[1]} "is not an admin"
-
             fi
 
 # If user already exists
         else 
             echo "USER" ${line[1],,} "ALREADY EXISTS"
-
         fi
     
     else 
