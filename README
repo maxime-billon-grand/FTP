@@ -13,3 +13,6 @@ The CSV file need to have the same structure as the one in example.
 
 The tar.gz archive will be created in the same directory than the save-proftpd.sh script.
 It will contain the home of the specified users, the etc/proftpd/ directory with all the config files, and the /var/log/proftpd directory with all the logs of the proftpd service.
+
+
+> The "test" directory countain some drafts and copies of the configuration files of proftpd for the developpement of theses scripts.
