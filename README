@@ -1,0 +1,15 @@
+
+>> JOB 07
+
+The installation script is decomposed in 3 parts, the basic installation, the module for anonymous access, and the module for TLS security.
+If you want to install all 3 fonctionnalities, you need to have the 3 files in the same directory.
+
+>> JOB 09
+
+The CSV file used as a source for the creation of the users needs to be in the same directory than the add-ftpuser_csv.sh script.
+The CSV file need to have the same structure as the one in example.
+
+>> JOB 10
+
+The tar.gz archive will be created in the same directory than the save-proftpd.sh script.
+It will contain the home of the specified users, the etc/proftpd/ directory with all the config files, and the /var/log/proftpd directory with all the logs of the proftpd service.
