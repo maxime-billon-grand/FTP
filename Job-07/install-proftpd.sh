@@ -3,14 +3,16 @@
 # Path of this script
 thisPath=$(dirname "$0")
 
-<<Block_comment
-# Checking if need to install the basis
-echo "Is needed to install the basis ? (Y/N)"
+
+# Checking if need to install the basic commands
+echo "If this is a newly created debian noGUI server, we need to install the basic commands."
+echo "Is needed to install the basic commands ? (Y/N)"
 read installBasis
 if [[ "$installBasis" = "Y" ]] || [[ "$installBasis" = "y" ]]; then
-    sudo apt install adduser
+    apt install sudo
+    apt install adduser
 fi
-Block_comment
+
 
 # ProFTPd Installation
 if ! sudo apt install proftpd* ; then
